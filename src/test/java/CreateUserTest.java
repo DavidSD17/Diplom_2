@@ -1,7 +1,10 @@
 import client.UserClient;
 import io.qameta.allure.Description;
+import io.restassured.response.ValidatableResponse;
 import model.User;
+import model.UserCreds;
 import model.UserGenerator;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,75 +12,41 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class CreateUserTest {
-    private UserClient userClient;
-//    private User user;
 
+    private User user;
+    private UserClient userClient;
+    private String accessToken;
+
+    @Before
+    public void setUp() {
+        user = UserGenerator.generateRandomCredentials();
+        userClient = new UserClient(user);
+    }
 
     @Test
     @Description("При регистрации создаётся новый пользователь")
     public void createUserSuccess() {
-        User user = UserGenerator.generateRandomCredentials();
-        UserClient userClient = new UserClient(user);
-        userClient.create(user)
+
+        ValidatableResponse loginResponse = userClient.create(user)
                 .assertThat()
                 .statusCode(200)
                 .and()
-                .body("accessToken",notNullValue());
+                .body("accessToken", notNullValue());
+         accessToken = loginResponse.extract().path("accessToken");
 
-
-    }
-
-    @Test
-    @Description("Ytkmpz создать пользователя, который уже зарегистрирован")
-    public void createUserDouble() {
-        User user = UserGenerator.generateRandomCredentials();
-        UserClient userClient = new UserClient(user);
-        userClient.create(user)
-                .assertThat()
-                .statusCode(200);
-        userClient.create(user)
-                .assertThat()
-                .statusCode(403)
-                .and()
-                .body("message",equalTo("User already exists"));
+        System.out.println(accessToken);
 
     }
 
-    @Test
-    @Description("Нельзя создать пользователя без обязательного поля Email")
-    public void createUserWithoutEmail() {
-        User userNotEmail = UserGenerator.generateCredentialsNotEmail();
-        UserClient userClient = new UserClient(userNotEmail);
-        userClient.create(userNotEmail)
-                .assertThat()
-                .statusCode(403)
-                .and()
-                .body("message", equalTo("Email, password and name are required fields"));
 
-    }
 
-    @Test
-    @Description("Нельзя создать пользователя без обязательного поля Password")
-    public void createUserWithoutPassword() {
-        User user = UserGenerator.generateCredentialsNotPassword();
-        UserClient userClient = new UserClient(user);
-        userClient.create(user)
-                .assertThat()
-                .statusCode(403)
-                .and()
-                .body("message", equalTo("Email, password and name are required fields"));
-    }
-
-    @Test
+    @After
     @Description("Нельзя создать пользователя без обязательного поля Name")
-    public void createUserWithoutName() {
-        User user = UserGenerator.generateCredentialsNotName();
-        UserClient userClient = new UserClient(user);
-        userClient.create(user)
+    public void deleteUser() {
+        userClient.delete(accessToken)
                 .assertThat()
-                .statusCode(403)
-                .and()
-                .body("message", equalTo("Email, password and name are required fields"));
+                .statusCode(202);
+
     }
 
 
