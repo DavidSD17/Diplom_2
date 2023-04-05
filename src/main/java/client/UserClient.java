@@ -10,6 +10,8 @@ import static io.restassured.RestAssured.given;
 
 public class UserClient extends RestClient {
 
+    public final String REG_URL = BASE_URI+"/auth/register";
+
 
     public static User user;
 
@@ -25,7 +27,7 @@ public class UserClient extends RestClient {
                 .log().all()
                 .body(user)
                 .when()
-                .post()
+                .post(REG_URL)
                 .then().log().all();
 
     }
