@@ -1,9 +1,5 @@
 package model;
 
-import client.RestClient;
-
-import static client.RestClient.BASE_URI;
-
 public class User {
 
     public String email;
@@ -21,6 +17,17 @@ public class User {
         this.email = email;
         this.password = password;
     }
+    public User(String name) {
+        this.name = name;
+    }
+
+//    public User(String email) {
+//        this.email = email;
+//    }
+//
+//    public User(String password) {
+//        this.password = password;
+//    }
 
 
     public String getEmail() {
@@ -45,5 +52,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+
     }
 }
