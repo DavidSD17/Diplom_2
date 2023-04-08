@@ -1,3 +1,5 @@
+package user;
+
 import client.UserClient;
 import com.google.gson.Gson;
 import io.qameta.allure.Description;

@@ -1,3 +1,5 @@
+package user;
+
 import client.UserClient;
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;

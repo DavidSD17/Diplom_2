@@ -1,3 +1,5 @@
+package user;
+
 import client.UserClient;
 import io.qameta.allure.Description;
 import model.User;
@@ -8,8 +10,10 @@ import static org.hamcrest.CoreMatchers.equalTo;
 
 public class IncorrectCreateUserTest {
 
+
     private User user;
     private UserClient userClient;
+
 
     @Test
     @Description("Ytkmpz создать пользователя, который уже зарегистрирован")
@@ -60,7 +64,8 @@ public class IncorrectCreateUserTest {
                 .and()
                 .body("message", equalTo("Email, password and name are required fields"));
 
-
     }
+
+
 
 }
