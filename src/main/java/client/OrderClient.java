@@ -13,6 +13,7 @@ public class OrderClient extends RestClient {
 
     public static Order order;
 
+
     public OrderClient(Order order){
 
     }
@@ -50,4 +51,26 @@ public class OrderClient extends RestClient {
                 .delete()
                 .then().log().all();
     }
+
+    @Step("get Orders By Users {order}")
+    public ValidatableResponse getOrdersByUsers(String accessToken) {
+        return given()
+                .spec(getBaseReqSpec())
+                .header("Authorization",accessToken)
+                .log().all()
+                .when()
+                .get(ORDER_URL)
+                .then().log().all();
+    }
+
+    @Step("get Orders By Users Not Auth {order} {order}")
+    public ValidatableResponse getOrdersNotAuth() {
+        return given()
+                .spec(getBaseReqSpec())
+                .log().all()
+                .when()
+                .get(ORDER_URL)
+                .then().log().all();
+    }
+
 }
