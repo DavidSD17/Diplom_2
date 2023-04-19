@@ -9,7 +9,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
-public class createOrderWithOutAuthTest {
+public class CreateOrderWithOutAuthTest {
 
     Order order = new Order();
     private OrderClient orderClient;

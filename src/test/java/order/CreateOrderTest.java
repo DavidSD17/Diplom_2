@@ -3,7 +3,6 @@ package order;
 import client.OrderClient;
 import client.UserClient;
 import com.google.gson.Gson;
-import groovyjarjarantlr4.v4.codegen.model.SrcOp;
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
 import model.Order;
@@ -30,9 +29,6 @@ public class CreateOrderTest{
     private int orderId;
 
 
-    public CreateOrderTest() {
-    }
-
 
     @Before
     public void setUp() {
@@ -56,7 +52,6 @@ public class CreateOrderTest{
                 .statusCode(200)
                 .and()
                 .body("success", equalTo(true));
-        orderId = orderResponse.extract().path("order.number");
 
     }
 

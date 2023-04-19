@@ -18,14 +18,18 @@ public class IncorrectCreateUserTest {
     @Test
     @Description("Ytkmpz создать пользователя, который уже зарегистрирован")
     public void createUserDouble() {
-        User user = new User("test33223-data@yandex.ru","password","Username112");
+        User user = UserGenerator.generateRandomCredentials();
+
         UserClient userClient = new UserClient(user);
+        userClient.create(user)
+                .assertThat()
+                .statusCode(200);
+
         userClient.create(user)
                 .assertThat()
                 .statusCode(403)
                 .and()
                 .body("message", equalTo("User already exists"));
-
     }
 
     @Test

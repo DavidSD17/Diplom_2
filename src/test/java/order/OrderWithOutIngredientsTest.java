@@ -31,7 +31,7 @@ public class OrderWithOutIngredientsTest {
     }
 
     @Test
-    @Description("Создание заказа с авторизацией")
+    @Description("Создание заказа без ингредиентов")
     public void createOrderNotIngredients() {
 
         orderClient.createWithoutIngredients(json)
@@ -43,7 +43,7 @@ public class OrderWithOutIngredientsTest {
     }
 
     @Test
-    @Description("Создание заказа с авторизацией")
+    @Description("Создание заказа с некорректным хэш ингредиента")
     public void createOrderWithFakeHash() {
 
         orderClient.createWithoutIngredients(fakeHashJson)

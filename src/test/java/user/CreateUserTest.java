@@ -36,14 +36,12 @@ public class CreateUserTest {
                 .body("accessToken", notNullValue());
          accessToken = loginResponse.extract().path("accessToken");
 
-        System.out.println(accessToken);
-
     }
 
 
 
     @After
-    @Description("Нельзя создать пользователя без обязательного поля Name")
+    @Description("Удаление пользователя")
     public void deleteUser() {
         userClient.delete(accessToken)
                 .assertThat()

@@ -2,9 +2,9 @@ package model;
 
 public class User {
 
-    public String email;
-    public String password;
-    public String name;
+    private String email;
+    private String password;
+    private String name;
 
 
     public User(String email, String password, String name) {
@@ -20,14 +20,6 @@ public class User {
     public User(String name) {
         this.name = name;
     }
-
-//    public User(String email) {
-//        this.email = email;
-//    }
-//
-//    public User(String password) {
-//        this.password = password;
-//    }
 
 
     public String getEmail() {
