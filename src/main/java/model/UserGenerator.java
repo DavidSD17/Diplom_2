@@ -19,9 +19,11 @@ public class UserGenerator {
         return new User(email,password,name);
     }
     public static User generateCredentialsNotPassword(){
-        String email = RandomStringUtils.randomAlphabetic(7)+"@davids.crew";
-        String password = RandomStringUtils.randomAlphabetic(8);;
-        return new User(email,password);
+        String email = RandomStringUtils.randomAlphabetic(7)+"@davids.pass";
+        String password = "";
+        String name = RandomStringUtils.randomAlphabetic(8);
+
+        return new User(email,password,name);
     }
 
     public static User generateCredentialsNotName(){

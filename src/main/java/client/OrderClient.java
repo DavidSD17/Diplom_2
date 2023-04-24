@@ -9,13 +9,13 @@ import static io.restassured.RestAssured.given;
 
 public class OrderClient extends RestClient {
 
-    public final String ORDER_URL = BASE_URI+"/orders";
+    public final String ORDER_URL = "https://stellarburgers.nomoreparties.site/api/orders";
 
     public static Order order;
 
 
     public OrderClient(Order order){
-
+    this.order = order;
     }
 
 

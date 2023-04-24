@@ -51,7 +51,7 @@ public class UserClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("Login {user}")
+    @Step("Delete {user}")
     public ValidatableResponse delete(String accessToken) {
         return given()
                 .spec(getBaseReqSpec())
@@ -62,7 +62,7 @@ public class UserClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("change {user}")
+    @Step("change data with auth {user}")
     public ValidatableResponse changeDataWithAuth(String accessToken, String userData) {
         return given()
                 .spec(getBaseReqSpec())
@@ -74,7 +74,7 @@ public class UserClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("change {user}")
+    @Step("change data not auth {user}")
     public ValidatableResponse changeDataNotAuth(String userName) {
         return given()
                 .spec(getBaseReqSpec())

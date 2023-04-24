@@ -47,7 +47,7 @@ public class CreateOrderTest{
                 .body("accessToken", notNullValue());
         accessToken = loginResponse.extract().path("accessToken");
 
-        ValidatableResponse orderResponse =  orderClient.create(order)
+         orderClient.create(order)
                 .assertThat()
                 .statusCode(200)
                 .and()
