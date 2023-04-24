@@ -43,9 +43,11 @@ public class CreateUserTest {
     @After
     @Description("Удаление пользователя")
     public void deleteUser() {
-        userClient.delete(accessToken)
-                .assertThat()
-                .statusCode(202);
+        if(accessToken != null) {
+            userClient.delete(accessToken)
+                    .assertThat()
+                    .statusCode(202);
+        }
 
     }
 

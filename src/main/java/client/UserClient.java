@@ -10,18 +10,15 @@ import static io.restassured.RestAssured.given;
 
 public class UserClient extends RestClient {
 
-    public final String REG_URL = BASE_URI + "/auth/register";
-    public final String LOGIN_URL = BASE_URI + "/auth/login";
-    public final String USER_URL = BASE_URI +"/auth/user";
+    private final String REG_URL =  "https://stellarburgers.nomoreparties.site/api/auth/register";
+    private final String LOGIN_URL =  "https://stellarburgers.nomoreparties.site/api/auth/login";
+    private final String USER_URL = "https://stellarburgers.nomoreparties.site/api/auth/user";
 
-    public String accessToken;
-
-    public UserCreds userCreds;
 
     public static User user;
 
     public UserClient(User user) {
-
+        this.user = user;
     }
     public UserClient(UserCreds userCreds){
 

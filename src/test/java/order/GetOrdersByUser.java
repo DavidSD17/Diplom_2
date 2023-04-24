@@ -19,11 +19,10 @@ public class GetOrdersByUser {
     private OrderClient orderClient;
     Order order = new Order();
     private String accessToken;
-    UserGenerator userGenerator = new UserGenerator();
 
 
     @Test
-    @Description("Логин под существующим пользователем")
+    @Description("Получить заказы под авторизованым пользователем")
     public void getOrdersWithAuth() {
         User user = UserGenerator.generateRandomCredentials();
         UserClient userClient = new UserClient(user);

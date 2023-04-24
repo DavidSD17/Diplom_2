@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 
 public class OrderClient extends RestClient {
 
-    public final String ORDER_URL = "https://stellarburgers.nomoreparties.site/api/orders";
+    private final String ORDER_URL = "https://stellarburgers.nomoreparties.site/api/orders";
 
     public static Order order;
 
@@ -30,7 +30,7 @@ public class OrderClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("Create {order}")
+    @Step("Create without ingredients {order}")
     public ValidatableResponse createWithoutIngredients(String order) {
         return given()
                 .spec(getBaseReqSpec())
@@ -41,7 +41,7 @@ public class OrderClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("Login {user}")
+    @Step("Delete {user}")
     public ValidatableResponse delete(String orderId) {
         return given()
                 .spec(getBaseReqSpec())
@@ -73,4 +73,7 @@ public class OrderClient extends RestClient {
                 .then().log().all();
     }
 
+    public String getORDER_URL() {
+        return ORDER_URL;
+    }
 }
