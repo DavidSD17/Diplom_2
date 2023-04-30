@@ -15,8 +15,6 @@ public class UserClient extends RestClient {
     private final String USER_URL = "https://stellarburgers.nomoreparties.site/api/auth/user";
 
 
-//    public UserClient(User user) {
-//    }
 
     @Step("Create {user}")
     public ValidatableResponse create(User user) {

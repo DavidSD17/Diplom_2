@@ -14,9 +14,6 @@ public class OrderClient extends RestClient {
     private static Order order;
 
 
-    public OrderClient(Order order){
-    this.order = order;
-    }
 
 
     @Step("Create {order}")

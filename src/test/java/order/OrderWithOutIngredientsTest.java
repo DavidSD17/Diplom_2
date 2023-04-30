@@ -27,7 +27,7 @@ public class OrderWithOutIngredientsTest {
     @Before
     public void setUp() {
 
-        orderClient = new OrderClient(order);
+        orderClient = new OrderClient();
     }
 
     @Test

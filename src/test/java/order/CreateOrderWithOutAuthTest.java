@@ -17,7 +17,7 @@ public class CreateOrderWithOutAuthTest {
     @Test
     @Description("Создание заказа без авторизации")
     public void createOrderNotAuth() {
-        orderClient = new OrderClient(order);
+        orderClient = new OrderClient();
         ValidatableResponse orderResponse =  orderClient.create(order)
                 .assertThat()
                 .statusCode(200)

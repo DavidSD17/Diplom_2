@@ -48,13 +48,13 @@ public class IncorrectCreateUserTest {
     public void createUserWithoutEmail() {
         User userNotEmail = UserGenerator.generateCredentialsNotEmail();
         UserClient userClient = new UserClient();
-        ValidatableResponse loginResponse = userClient.create(userNotEmail)
-
-                .assertThat()
+        ValidatableResponse loginResponse = userClient.create(userNotEmail);
+        accessToken = loginResponse.extract().path("accessToken");
+        loginResponse.assertThat()
                 .statusCode(403)
                 .and()
                 .body("message", equalTo("Email, password and name are required fields"));
-//        accessToken = loginResponse.extract().path("accessToken");
+
 
     }
 
@@ -62,12 +62,13 @@ public class IncorrectCreateUserTest {
     @Description("Нельзя создать пользователя без обязательного поля Password")
     public void createUserWithoutPassword() {
         User user = UserGenerator.generateCredentialsNotPassword();
-        ValidatableResponse loginResponse = userClient.create(user)
-                .assertThat()
+        ValidatableResponse loginResponse = userClient.create(user);
+        accessToken = loginResponse.extract().path("accessToken");
+        loginResponse.assertThat()
                 .statusCode(403)
                 .and()
                 .body("message", equalTo("Email, password and name are required fields"));
-        accessToken = loginResponse.extract().path("accessToken");
+
 
     }
 
@@ -75,12 +76,12 @@ public class IncorrectCreateUserTest {
     @Description("Нельзя создать пользователя без обязательного поля Name")
     public void createUserWithoutName() {
         User user = UserGenerator.generateCredentialsNotName();
-        ValidatableResponse loginResponse = userClient.create(user)
-                .assertThat()
+        ValidatableResponse loginResponse = userClient.create(user);
+        accessToken = loginResponse.extract().path("accessToken");
+        loginResponse.assertThat()
                 .statusCode(403)
                 .and()
                 .body("message", equalTo("Email, password and name are required fields"));
-        accessToken = loginResponse.extract().path("accessToken");
 
     }
 

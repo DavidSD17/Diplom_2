@@ -34,7 +34,7 @@ public class GetOrdersByUser {
                 .body("accessToken", notNullValue());
         accessToken = loginResponse.extract().path("accessToken");
 
-        orderClient = new OrderClient(order);
+        orderClient = new OrderClient();
         orderClient.getOrdersByUsers(accessToken)
                 .assertThat()
                 .statusCode(200)
@@ -47,7 +47,7 @@ public class GetOrdersByUser {
     @Description("Нельзя получить заказы без авторизации")
     public void getOrdersNotAuth() {
 
-        orderClient = new OrderClient(order);
+        orderClient = new OrderClient();
         orderClient.getOrdersNotAuth()
                 .assertThat()
                 .statusCode(401)

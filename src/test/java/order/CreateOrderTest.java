@@ -34,7 +34,7 @@ public class CreateOrderTest{
     public void setUp() {
         user = UserGenerator.generateRandomCredentials();
         userClient = new UserClient();
-        orderClient = new OrderClient(order); // На уточнении у ревьюера
+        orderClient = new OrderClient(); // На уточнении у ревьюера
     }
 
     @Test
