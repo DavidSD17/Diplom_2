@@ -22,7 +22,7 @@ public class CreateUserTest {
     @Before
     public void setUp() {
         user = UserGenerator.generateRandomCredentials();
-        userClient = new UserClient(user);
+        userClient = new UserClient();
     }
 
     @Test

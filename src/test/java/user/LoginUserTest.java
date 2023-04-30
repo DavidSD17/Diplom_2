@@ -21,14 +21,14 @@ public class LoginUserTest {
 
     @Before
     public void setUp() {
-        userClient = new UserClient(user);
+        userClient = new UserClient();
     }
 
     @Test
     @Description("Логин под существующим пользователем")
     public void loginUserSuccess() {
         User user = UserGenerator.generateRandomCredentials();
-        UserClient userClient = new UserClient(user);
+        userClient = new UserClient();
         ValidatableResponse loginResponse = userClient.create(user)
                 .assertThat()
                 .statusCode(200)
@@ -49,9 +49,10 @@ public class LoginUserTest {
     @Test
     @Description("Логин с неверным логином и паролем")
     public void loginUserIncorrectCreds() {
-        UserCreds user = new UserCreds("test88888-data@yandex1.ru","password");
-        UserClient userClient = new UserClient(user);
-        userClient.login(user)
+        User user = UserGenerator.generateRandomCredentials();
+        UserClient userClient = new UserClient();
+        UserCreds userCreds = new UserCreds(user.getEmail(), user.getPassword());
+        userClient.login(userCreds)
                 .assertThat()
                 .statusCode(401)
                 .and()

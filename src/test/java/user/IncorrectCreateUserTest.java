@@ -20,7 +20,7 @@ public class IncorrectCreateUserTest {
 
     @Before
     public void setUp() {
-        userClient = new UserClient(user);
+        userClient = new UserClient();
     }
 
 
@@ -29,7 +29,7 @@ public class IncorrectCreateUserTest {
     public void createUserDouble() {
         User user = UserGenerator.generateRandomCredentials();
 
-        UserClient userClient = new UserClient(user);
+        UserClient userClient = new UserClient();
         ValidatableResponse loginResponse = userClient.create(user)
                 .assertThat()
                 .statusCode(200);
@@ -47,13 +47,14 @@ public class IncorrectCreateUserTest {
     @Description("Нельзя создать пользователя без обязательного поля Email")
     public void createUserWithoutEmail() {
         User userNotEmail = UserGenerator.generateCredentialsNotEmail();
-        UserClient userClient = new UserClient(userNotEmail);
+        UserClient userClient = new UserClient();
         ValidatableResponse loginResponse = userClient.create(userNotEmail)
+
                 .assertThat()
                 .statusCode(403)
                 .and()
                 .body("message", equalTo("Email, password and name are required fields"));
-        accessToken = loginResponse.extract().path("accessToken");
+//        accessToken = loginResponse.extract().path("accessToken");
 
     }
 

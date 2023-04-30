@@ -25,7 +25,7 @@ public class GetOrdersByUser {
     @Description("Получить заказы под авторизованым пользователем")
     public void getOrdersWithAuth() {
         User user = UserGenerator.generateRandomCredentials();
-        UserClient userClient = new UserClient(user);
+        UserClient userClient = new UserClient();
 
         ValidatableResponse loginResponse = userClient.create(user)
                 .assertThat()

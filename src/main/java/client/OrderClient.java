@@ -11,7 +11,7 @@ public class OrderClient extends RestClient {
 
     private final String ORDER_URL = "https://stellarburgers.nomoreparties.site/api/orders";
 
-    public static Order order;
+    private static Order order;
 
 
     public OrderClient(Order order){
@@ -41,7 +41,7 @@ public class OrderClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("Delete {user}")
+    @Step("Delete {order}")
     public ValidatableResponse delete(String orderId) {
         return given()
                 .spec(getBaseReqSpec())
@@ -63,7 +63,7 @@ public class OrderClient extends RestClient {
                 .then().log().all();
     }
 
-    @Step("get Orders By Users Not Auth {order} {order}")
+    @Step("get Orders By Users Not Auth {order}")
     public ValidatableResponse getOrdersNotAuth() {
         return given()
                 .spec(getBaseReqSpec())

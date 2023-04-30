@@ -28,7 +28,7 @@ public class ChangeDataUserTest {
     @Before
     public void setUp() {
         user = UserGenerator.generateRandomCredentials();
-        userClient = new UserClient(user);
+        userClient = new UserClient();
     }
 
     @Test
@@ -132,7 +132,7 @@ public class ChangeDataUserTest {
     }
 
     @After
-    @Description("Нельзя создать пользователя без обязательного поля Name")
+    @Description("Удаление тестового пользователя")
     public void deleteUser() {
         userClient.delete(accessToken)
                 .assertThat()
