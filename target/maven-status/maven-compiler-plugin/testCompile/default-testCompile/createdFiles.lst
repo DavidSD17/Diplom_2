@@ -1,0 +1,8 @@
+user\CreateUserTest.class
+order\OrderWithOutIngredientsTest.class
+order\CreateOrderTest.class
+user\LoginUserTest.class
+user\IncorrectCreateUserTest.class
+order\GetOrdersByUser.class
+user\ChangeDataUserTest.class
+order\CreateOrderWithOutAuthTest.class

@@ -1,0 +1,8 @@
+model\UserGenerator.class
+client\UserClient.class
+client\OrderClient.class
+model\SimpleArray.class
+model\UserCreds.class
+client\RestClient.class
+model\Order.class
+model\User.class
